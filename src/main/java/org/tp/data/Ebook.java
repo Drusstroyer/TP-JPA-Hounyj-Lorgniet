@@ -3,8 +3,8 @@ package org.tp.data;
 import jakarta.persistence.*;
 
 @Entity
-// ToDo: instancier la valeur du discriminant pour la sous-classe Ebook
 
+@DiscriminatorValue("EBOOK")
 public class Ebook extends Book {
     private String format;
 

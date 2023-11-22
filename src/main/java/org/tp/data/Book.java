@@ -4,22 +4,18 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-// ToDo: Définir Book comme source d'héritage en mode SINGLE_TABLE
-
-// ToDo: Définir l'attribut discriminant pour identifier les sous-classes
-
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="Type",discriminatorType=DiscriminatorType.STRING,length=20)
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-
-    // ToDo: Définir le type de lien avec Category
     
+    @ManyToOne(targetEntity = Category.class)
     private Category category;
 
-    
-    // ToDo: Définir le type de lien avec Author (On ne définit pas le lien inverse ici)
+    @ManyToMany(targetEntity = Author.class)
     private Set<Author> authors;
 
     // Getters and Setters

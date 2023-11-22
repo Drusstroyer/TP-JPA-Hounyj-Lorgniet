@@ -19,7 +19,6 @@ public class Main {
         fictionCategory.setName("Fiction");
         categoryService.createCategory(fictionCategory);
 
-        // ToDo: Création de deux auteurs de nom Author1 et Author2
         AuthorService authorService = new AuthorServiceImpl(emf);
         Author author1 = new Author();
         author1.setName("Author 1");
@@ -30,19 +29,31 @@ public class Main {
         authorService.createAuthor(author2);
 
         BookService bookService = new BookServiceImpl(emf);
-        // ToDo: Création d'un PaperBook de titre PaerperBook1 et de 200 pages
         // Ajouter les auteurs Author1 et Author2 comme auteurs de ce livre
+        PaperBook Pbook1 = new PaperBook();
+        Set<Author> L_Authors = new HashSet<Author>();
+        L_Authors.add(author1);
+        L_Authors.add(author2);
+        Pbook1.setAuthors(L_Authors);
+        Pbook1.setCategory(fictionCategory);
 
-        // ToDo: Faire persister ce livre à l'aide du service bookService (c'est une création)
-       
+        //  Faire persister ce livre à l'aide du service bookService (c'est une création)
+        bookService.createBook(Pbook1);
 
-        // ToDo: refaire la même chose avec un Ebook de titre EBook1 et de format PDF.
-        
+        //  refaire la même chose avec un Ebook de titre EBook1 et de format PDF.
+        Ebook Ebook1 = new Ebook();
+        L_Authors = new HashSet<Author>();
+        L_Authors.add(author1);
+        L_Authors.add(author2);
+        Ebook1.setAuthors(L_Authors);
+        Ebook1.setCategory(fictionCategory);
+        bookService.createBook(Ebook1);
 
-        // ToDo: Recherche d'un livre par son Id (par exemple avec l'ID du paperbook précédent)
+        //  Recherche d'un livre par son Id (par exemple avec l'ID du paperbook précédent)
         // ET on afficha sa catégorie
-        Book foundBook = // On utilise le service bookService;
-        Category foundCategory = // On extrait la catégorie à l'aide d'un getter;
+
+        Book foundBook = bookService.findBookById(Pbook1.getId());// On utilise le service bookService;
+        Category foundCategory = foundBook.getCategory();// On extrait la catégorie à l'aide d'un getter;
         System.out.println("Category of PaperBook 1: " + foundCategory.getName());
 
         // Recherche d'auteurs d'un livre
@@ -55,11 +66,16 @@ public class Main {
         // ToDo: Recherche de livres par catégorie (Fiction par exemple), on affiche juste les titres
         // On utilise la méthode de bookService pour une recherche
         // On parcours la liste résultat pour afficher les titres de livres
-        
-
+        List<Book> foundbooks = bookService.findBooksByCategoryName("Fiction");
+        for (Book book : foundbooks) {
+            System.out.println("Book Title: " + book.getTitle());
+        }
         // ToDo: Recherche de livres par auteur (par exemple ar l'Author 1 créé avant), on affiche juste les titres
         // idem recherche par catégorie dans le principe
-
+        foundbooks = bookService.findBooksByAuthorId(author1.getId());
+        for (Book book : foundbooks) {
+            System.out.println("Book Title: " + book.getTitle());
+        }
         // Fermeture de l'EntityManagerFactory
         emf.close();
     }
