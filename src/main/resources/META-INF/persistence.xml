@@ -12,14 +12,14 @@
         <!-- Autres classes à ajouter -->
 
         <properties>
-	      <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />
-	      <property name="jakarta.persistence.jdbc.url"    value="jdbc:h2:mem:test" />
-	      <property name="jakarta.persistence.jdbc.user" value="sa" />
-	      <property name="jakarta.persistence.jdbc.password" value="" />  
-            <!-- property name="jakarta.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver"/-->
-            <!-- property name="jakarta.persistence.jdbc.url" value="jdbc:oracle:thin:@im2ag-oracle.univ-grenoble-alpes.fr:1521:im2ag"/-->
-            <!-- property name="jakarta.persistence.jdbc.user" value="jouanotf"/-->
-            <!-- property name="jakarta.persistence.jdbc.password" value="c976d43602"/-->
+	      <!-- property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" / -->
+	      <!-- property name="jakarta.persistence.jdbc.url"    value="jdbc:h2:mem:test" / -->
+	      <!-- property name="jakarta.persistence.jdbc.user" value="sa" / -->
+	      <!-- property name="jakarta.persistence.jdbc.password" value="" / -->  
+            <property name="jakarta.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:oracle:thin:@im2ag-oracle.univ-grenoble-alpes.fr:1521:im2ag"/>
+            <property name="jakarta.persistence.jdbc.user" value="jouanotf"/>
+            <property name="jakarta.persistence.jdbc.password" value="c976d43602"/>
             <!-- Autres propriétés -->
 	      <property name="hibernate.hbm2ddl.auto" value="create" />
 	      <property name="hibernate.show_sql" value="true"/>
