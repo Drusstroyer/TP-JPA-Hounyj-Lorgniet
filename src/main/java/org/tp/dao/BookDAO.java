@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.tp.data.Author;
 import org.tp.data.Book;
+import org.tp.data.Category;
 
 public class BookDAO implements CRUDRepository<Book> {
     private final EntityManagerFactory emf;

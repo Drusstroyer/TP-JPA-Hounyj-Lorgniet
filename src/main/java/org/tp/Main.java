@@ -34,6 +34,7 @@ public class Main {
         Set<Author> L_Authors = new HashSet<Author>();
         L_Authors.add(author1);
         L_Authors.add(author2);
+        Pbook1.setTitle("Super!");
         Pbook1.setAuthors(L_Authors);
         Pbook1.setCategory(fictionCategory);
 
@@ -45,6 +46,7 @@ public class Main {
         L_Authors = new HashSet<Author>();
         L_Authors.add(author1);
         L_Authors.add(author2);
+        Ebook1.setTitle("LesMisérables");
         Ebook1.setAuthors(L_Authors);
         Ebook1.setCategory(fictionCategory);
         bookService.createBook(Ebook1);
